@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:    
+
+  r-base:
+    build: .
+    container_name: r-base
+    restart: always
+    environment:
+      - USER=${USER_RSTUDIO-admin}
+      - PASSWORD=${PASSWORD_RSTUDIO-secret}
+    volumes:
+    - ./workspace:/home/${USER_RSTUDIO-admin}/workspace
+    ports:
+      - 8787:8787
+
+volumes:
+  workspace:
